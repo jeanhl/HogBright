@@ -38,13 +38,29 @@ def sort_by_cohort(filename):
 
     """
 
-    all_students = []
     winter_15 = []
     spring_15 = []
     summer_15 = []
     tas = []
 
-    # Code goes here
+    data = open(filename)
+
+    for line in data:
+        line = line.rstrip()
+        tokens = line.split("|")
+        name = tokens[0] + ' ' + tokens[1]
+        if tokens[-1] == "TA":
+            tas.append(name)
+        elif tokens[-1] == "Winter 2015":
+            winter_15.append(name)
+        elif tokens[-1] == "Spring 2015":
+            spring_15.append(name)
+        elif tokens[-1] == "Summer 2015":
+            summer_15.append(name)
+        else:
+            pass
+
+    all_students = [winter_15, spring_15, summer_15, tas]
 
     return all_students
 
