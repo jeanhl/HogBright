@@ -85,7 +85,6 @@ def students_by_house(filename):
             ]
     """
 
-    all_students = []
     gryffindor = []
     hufflepuff = []
     slytherin = []
@@ -95,7 +94,30 @@ def students_by_house(filename):
     tas = []
     instructors = []
 
-    # Code goes here
+    data = open(filename)
+
+    for line in data:
+        line = line.rstrip()
+        tokens = line.split("|")
+        name = tokens[1]
+        if tokens[2] == "Gryffindor":
+            gryffindor.append(name)
+        elif tokens[2] == "Hufflepuff":
+            hufflepuff.append(name)
+        elif tokens[2] == "Slytherin":
+            slytherin.append(name)
+        elif tokens[2] == "Ravenclaw":
+            ravenclaw.append(name)
+        elif tokens[2] == "Dumbledore's Army":
+            dumbledores_army.append(name)
+        elif tokens[2] == "Order of the Phoenix":
+            order_of_the_phoenix.append(name)
+        elif tokens[-1] == "TA":
+            tas.append(name)
+        else:
+            instructors.append(name)
+
+    all_students = [gryffindor, hufflepuff, slytherin, ravenclaw, dumbledores_army, order_of_the_phoenix, tas, instructors]        
 
     return all_students
 
