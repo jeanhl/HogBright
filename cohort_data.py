@@ -159,7 +159,11 @@ def find_cohort_by_student_name(student_list):
     function that, given a first and last name, returns that student's cohort, or returns
     'Student not found.' when appropriate. """
 
-    # Code goes here
+    query = raw_input("Enter student's first and last name: ")
+
+    for item in student_list:
+        if query == item[0]:
+            return item [-1]
 
     return "Student not found."
 
