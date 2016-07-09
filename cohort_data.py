@@ -21,8 +21,11 @@ def unique_houses(filename):
     for line in data:
         line = line.rstrip()
         tokens = line.split("|")
+        #tokens = line.rstrip().split("|")
         if len(tokens[2]) > 0:
             houses.add(tokens[2])   
+
+    data.close()
 
     return houses
 
@@ -57,10 +60,12 @@ def sort_by_cohort(filename):
             spring_15.append(name)
         elif tokens[-1] == "Summer 2015":
             summer_15.append(name)
-        else:
-            pass
+        # else:  # ignore instructors
+        #     pass
 
     all_students = [winter_15, spring_15, summer_15, tas]
+
+    data.close()
 
     return all_students
 
@@ -117,7 +122,10 @@ def students_by_house(filename):
         else:
             instructors.append(name)
 
-    all_students = [gryffindor, hufflepuff, slytherin, ravenclaw, dumbledores_army, order_of_the_phoenix, tas, instructors]        
+    all_students = [gryffindor, hufflepuff, slytherin, ravenclaw, 
+                    dumbledores_army, order_of_the_phoenix, tas, instructors]        
+
+    data.close()
 
     return all_students
 
@@ -148,6 +156,8 @@ def all_students_tuple_list(filename):
             cohort = tokens[4]
             student = (name, house, advisor, cohort)
             student_list.append(student)
+
+    data.close()
 
     return student_list
 
